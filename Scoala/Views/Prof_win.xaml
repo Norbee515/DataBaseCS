@@ -1,0 +1,22 @@
+﻿<Window x:Class="Scoala.Views.Prof_win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scoala.Views"
+        xmlns:ctx="clr-namespace:Scoala.ViewModels"
+        mc:Ignorable="d"
+        Title="Prof_win" Height="450" Width="800" >
+    <Grid>
+        <Label  Content="{Binding CurrentUser.Username}" FontSize="20" Foreground="Beige" HorizontalAlignment="Left" Margin="165,26,0,0" VerticalAlignment="Top" Width="170"  BorderThickness="1" Height="37"/>
+        <Label  Foreground="Beige" FontSize="20" Content="Bine ai venit " HorizontalAlignment="Left" Margin="48,26,0,0" VerticalAlignment="Top" Width="117" Height="37"/>
+        <Frame Name="Main" x:FieldModifier="public" NavigationUIVisibility="Hidden"/>
+       </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/Scoala;component/Images/back.jpg">
+        </ImageBrush>
+    </Window.Background>
+    <Window.DataContext>
+        <ctx:ProfVM/>
+    </Window.DataContext>
+</Window>

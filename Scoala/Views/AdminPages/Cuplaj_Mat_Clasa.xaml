@@ -1,0 +1,45 @@
+﻿<Page x:Class="Scoala.Views.AdminPages.Cuplaj_Mat_Clasa"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Scoala.Views.AdminPages"
+      xmlns:ctx="clr-namespace:Scoala.ViewModels.AdminVMS.Cuplaje"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Cuplaj_Mat_Clasa">
+    <Page.DataContext>
+        <ctx:Cuplaj_MatVM/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel>
+            <ComboBox x:Name="elev_choice" SelectedIndex="0" ItemsSource="{Binding MateriList}" SelectedItem="{Binding SelectedMat}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="217,239,434,184.6" />
+        </StackPanel>
+        <StackPanel>
+        <ComboBox x:Name="an" SelectedIndex="0" ItemsSource="{Binding AniList}" SelectedItem="{Binding SelectedAn}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="56,165,595,258.6" />
+        </StackPanel>
+        <Label FontSize="10" Foreground="Beige" Content="Cu ce materie cuplati?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Height="27" Margin="219,218,0,0"/>
+        <Button Content="Cuplati" Background="Beige" FontSize="15" HorizontalAlignment="Left" Margin="214,327,0,0" VerticalAlignment="Top" Width="113" Height="39" 
+                Command="{Binding CuplCommand}" CommandParameter="{Binding SelectedMat}"/>
+
+        <StackPanel>
+            <ComboBox x:Name="spec" SelectedIndex="0" ItemsSource="{Binding SpecList}" SelectedItem="{Binding SelectedSpec}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="327,165,324,258.6" />
+            </StackPanel>
+            <ListBox Background="#c0ffffff" Name="listPersWoPhone" ItemsSource="{Binding MateriAnSpecList}" Margin="515,165,10,127.6">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="{Binding Nume}" />
+                        <Label Content="{Binding Are_tezaS}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Foreground="Beige" FontSize="10"  Content="Anul de studiu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Height="27" Margin="59,141,0,0"/>
+        <Label Foreground="Beige" FontSize="10" Content="Specializare" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Height="27" Margin="329,141,0,0"/>
+        <Label Foreground="Beige" FontSize="10"  Content="Materii prezente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Height="27" Margin="515,141,0,0"/>
+    </Grid>
+</Page>

@@ -1,0 +1,18 @@
+﻿<Page x:Class="Scoala.Views.ProfPages.Prof_norm_page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Scoala.Views.ProfPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Prof_norm_page">
+
+    <Grid>
+        <Button Click="Absenta" Background="Beige" FontSize="15" Content="Adaugati/Modificati Absenta" HorizontalAlignment="Left" Margin="85,193,0,0" VerticalAlignment="Top" Width="215" Height="53"/>
+        <Button Click="Nota" Background="Beige" FontSize="15" Content="Adaugati/Modificati Nota" HorizontalAlignment="Left" Margin="323,193,0,0" VerticalAlignment="Top" Width="187" Height="53"/>
+        <Button Click="Medie" Background="Beige" FontSize="15"  Content="Calculati medie" HorizontalAlignment="Left" Margin="541,193,0,0" VerticalAlignment="Top" Width="159" Height="53"/>
+        <Label Content="Alegeti o optiune" FontSize="20" Foreground="Beige" HorizontalAlignment="Left" Margin="323,114,0,0" VerticalAlignment="Top" Width="169"/>
+
+    </Grid>
+</Page>

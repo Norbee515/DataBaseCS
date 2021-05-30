@@ -1,0 +1,35 @@
+﻿<Page x:Class="Scoala.Views.AdminPages.AdminDelete"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ctx="clr-namespace:Scoala.ViewModels.AdminVMS"
+      xmlns:local="clr-namespace:Scoala.Views.AdminPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminDelete">
+    <Page.DataContext>
+        <ctx:AdminDelVM/>
+    </Page.DataContext>
+    <Grid>
+        <Label FontSize="20" Foreground="Beige" Content="Alegeti un Elev" HorizontalAlignment="Left" Margin="112,142,0,0" VerticalAlignment="Top" Width="148" Height="44"/>
+        <Label FontSize="20" Foreground="Beige" Content="Alegeti un Profesor" HorizontalAlignment="Left" Margin="306,142,0,0" VerticalAlignment="Top" Width="181" Height="44"/>
+        <Label FontSize="20" Foreground="Beige" Content="Alegeti o Materie" HorizontalAlignment="Left" Margin="538,142,0,0" VerticalAlignment="Top" Width="163" Height="44"/>
+        <StackPanel>
+            <ComboBox x:Name="elev_choice" IsEditable="True" SelectedIndex="0" ItemsSource="{Binding ElevList}" SelectedItem="{Binding SelectedElev}"
+                      IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="111,226,540,196.6" Height="26" />
+        </StackPanel>
+        <StackPanel>
+            <ComboBox x:Name="prof_choice" IsEditable="True" SelectedIndex="0" ItemsSource="{Binding ProfesorList}" SelectedItem="{Binding SelectedProf}"
+                IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="323,226,328,181.6" Height="25" />
+        </StackPanel>
+        <StackPanel>
+            <ComboBox x:Name="mat_choice"  IsEditable="True" SelectedIndex="0" ItemsSource="{Binding MateriList}" SelectedItem="{Binding SelectedMaterie}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="538,226,113,181.6" Height="24" />
+        </StackPanel>
+        <Button Command="{Binding DelMatCommand}" CommandParameter="{Binding SelectedMaterie}" Background="Beige" Content="Stergeti Materie" HorizontalAlignment="Left" Margin="538,311,0,0" VerticalAlignment="Top" Width="149" Height="35"/>
+        <Button Command="{Binding DelProfCommand}" CommandParameter="{Binding SelectedProf}" Background="Beige" Content="Stergeti Profesor" HorizontalAlignment="Left" Margin="323,311,0,0" VerticalAlignment="Top" Width="149" Height="35"/>
+        <Button Command="{Binding DelElevCommand}" CommandParameter="{Binding SelectedElev}"  Background="Beige" Content="Stergeti Elev" HorizontalAlignment="Left" Margin="112,311,0,0" VerticalAlignment="Top" Width="149" Height="35"/>
+
+    </Grid>
+</Page>

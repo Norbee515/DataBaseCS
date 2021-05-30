@@ -1,0 +1,46 @@
+﻿<Window x:Class="Scoala.Views.Elev_wind"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scoala.Views"
+        xmlns:ctx="clr-namespace:Scoala.ViewModels"
+        mc:Ignorable="d"
+        Title="Elev_wind" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/Scoala;component/Images/back.jpg">
+        </ImageBrush>
+    </Window.Background>
+    <Window.DataContext>
+        <ctx:ElevwVM/>
+    </Window.DataContext>
+    <Grid>
+        <Label  Content="{Binding CurrentUser.Username}" FontSize="20" Foreground="Beige" HorizontalAlignment="Left" Margin="165,26,0,0" VerticalAlignment="Top" Width="155"  BorderThickness="1" Height="37"/>
+        <Label  Foreground="Beige" FontSize="20" Content="Bine ai venit " HorizontalAlignment="Left" Margin="48,26,0,0" VerticalAlignment="Top" Width="117" Height="37"/>
+        <WrapPanel Margin="50,100,0,0">
+            <Label Width="59" Background="Beige" FontSize="15">Alegeti</Label>
+            <ComboBox x:Name="choices" Width="87" FontSize="15" ItemsSource="{Binding UserChoices}" SelectedItem="{Binding SelectedChoice}" SelectedIndex="0"
+                      IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" />
+            <Label Width="59" ></Label>
+            <ComboBox x:Name="materie" Width="185" FontSize="15" ItemsSource="{Binding ObjList}" SelectedItem="{Binding SelectedMat}" 
+                      SelectedIndex="0"
+                      IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option"/>
+            <Label Width="59" ></Label>
+            
+            <ComboBox x:Name="sem" Width="104" FontSize="15" ItemsSource="{Binding Semesters}" SelectedItem="{Binding SelectedSem}" SelectedIndex="0"
+                IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" />
+        </WrapPanel>
+        <ListBox Background="#c0ffffff" ItemsSource="{Binding Elev_Nota_AbsList}" Height="250" Margin="485,150,9.6,20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="{Binding Data}" />
+                        <Label Content="{Binding Aux}" />
+                        <Label Content="{Binding Nume}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Vizualizati" Background="Beige" FontSize="15" HorizontalAlignment="Left" Margin="52,300,0,0" VerticalAlignment="Top" Width="113" Height="39" Command="{Binding VizCommand}" CommandParameter="{Binding SelectedMat}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,52 @@
+﻿<Page x:Class="Scoala.Views.ProfPages.ProfNormP.NotaP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ctx="clr-namespace:Scoala.ViewModels.ProfVMS"
+      xmlns:local="clr-namespace:Scoala.Views.ProfPages.ProfNormP"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NotaP">
+    <Page.DataContext>
+        <ctx:ProfNotaP/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel>
+        <ComboBox x:Name="elev_choice" SelectedIndex="1" ItemsSource="{Binding ElevList}" SelectedItem="{Binding SelectedElev}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="74,125,593,298.6" />
+        </StackPanel>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="74,174,0,0" TextWrapping="Wrap" Text="{Binding NotaAdd.Nota_str}" VerticalAlignment="Top" Width="120"/>
+        
+        <DatePicker Text="Data" HorizontalAlignment="Left" Margin="74,213,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding NotaAdd.DataD}"/>
+        
+        <Button Content="Adauga nota" HorizontalAlignment="Left" Margin="74,309,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding AddCommand}" CommandParameter="{Binding NotaAdd}" />
+        <StackPanel><ComboBox x:Name="sem"  ItemsSource="{Binding Semesters}" SelectedItem="{Binding NotaAdd.Semestru}" SelectedIndex="0"
+                IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="74,258,614,169.6" />
+        </StackPanel>
+        
+        <ListBox Background="#c0ffffff" ItemsSource="{Binding NotaList}" SelectedItem="{Binding SelectedNota}" Margin="498,139,25,151.6">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="{Binding Data}" />
+                        <Label Content="{Binding Nota_str}" />
+                        <Label Content="{Binding Semestru}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="324,125,0,0" TextWrapping="Wrap" Text="{Binding SelectedNota.Nota_str}" VerticalAlignment="Top" Width="120"/>
+        <DatePicker Text="Data" HorizontalAlignment="Left" Margin="324,165,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding SelectedNota.DataD }"/>
+        <StackPanel>
+            <ComboBox x:Name="sem_Copy"  ItemsSource="{Binding Semesters}" SelectedItem="{Binding SelectedNota.Semestru}" SelectedIndex="0"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="324,213,362,214.6" />
+        </StackPanel>
+        
+        <Button Content="Modifica nota" HorizontalAlignment="Left" Margin="324,261,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding ModifCommand}" CommandParameter="{Binding SelectedNota}"/>
+        <Button Content="Sterge nota" HorizontalAlignment="Left" Margin="324,309,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedNota}"/>
+    </Grid>
+</Page>

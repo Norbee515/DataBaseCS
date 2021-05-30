@@ -1,0 +1,52 @@
+﻿<Page x:Class="Scoala.Views.ProfPages.ProfNormP.AbsP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Scoala.Views.ProfPages.ProfNormP"
+      xmlns:ctx="clr-namespace:Scoala.ViewModels.ProfVMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AbsP">
+    <Page.DataContext>
+        <ctx:ProfAbsP/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel>
+            <ComboBox x:Name="elev_choice" SelectedIndex="1" ItemsSource="{Binding ElevList}" SelectedItem="{Binding SelectedElev}"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="74,168,593,255.6" />
+        </StackPanel>
+        <StackPanel>
+            <ComboBox x:Name="sem"  ItemsSource="{Binding E_Motivbl}" SelectedItem="{Binding AbsAdd.E_motivbl}" SelectedIndex="1"
+                IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="74,306,614,121.6" />
+        </StackPanel>
+        <DatePicker Text="Data" HorizontalAlignment="Left" Margin="74,257,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding AbsAdd.DataD}"/>
+
+        <Button Content="Adauga absenta" HorizontalAlignment="Left" Margin="74,349,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding AddCommand}" CommandParameter="{Binding AbsAdd}" />
+        
+        <ListBox Background="#c0ffffff" ItemsSource="{Binding AbsList}" SelectedItem="{Binding SelectedAbs}" Margin="498,139,25,151.6">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="{Binding Data}" />
+                        <Label Content="{Binding E_motiv}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DatePicker Text="Data" HorizontalAlignment="Left" Margin="324,257,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding SelectedAbs.DataD }"/>
+        <Button Content="Modifica absenta" HorizontalAlignment="Left" Margin="324,306,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding ModifCommand}" CommandParameter="{Binding SelectedAbs}"/>
+        <Button Content="Sterge absenta" HorizontalAlignment="Left" Margin="324,349,0,0" VerticalAlignment="Top" Width="120"
+                Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedAbs}"/>
+        <StackPanel>
+            <ComboBox x:Name="sem_Copy"  ItemsSource="{Binding E_Motiv}" SelectedItem="{Binding SelectedAbs.E_motiv}" SelectedIndex="0"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="324,211,364,216.6" />
+        </StackPanel>
+        <StackPanel><ComboBox x:Name="sem_Copy1"  ItemsSource="{Binding Semesters}" SelectedItem="{Binding AbsAdd.Semestru}" SelectedIndex="0"
+            IsSynchronizedWithCurrentItem="True" Background="Beige" Text="Select Option" Margin="74,215,614,212.6" />
+        </StackPanel>
+    </Grid>
+</Page>
